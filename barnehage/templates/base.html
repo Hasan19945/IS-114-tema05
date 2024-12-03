@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %} - OBLIG5</title>
+    <title>{% block title %}{% endblock %} - OBLIG5</title>
     <style>
-    
+        /* Grunnleggende styling */
         body {
-          margin-left: 20px;
-          margin-right: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            font-family: Arial, sans-serif;
         }
+
+        /* Lenker */
         a:link { color: #0000EE; }
         a:visited { color: #551A8B; }
-        a:link:active, :visited:active { color: #FF0000; }
+        a:link:active, a:visited:active { color: #FF0000; }
 
+        /* Tittelstyling */
         .title {
             margin: 5px;
             width: 100%;
         }
-        /*
-        .content {
-            margin: 5px;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-        */
 
+        /* Felter for innhold */
         button,
         input,
         select,
@@ -56,44 +52,55 @@
             right: 0;
         }
 
-
-        .title a {
-            color: #0000EE;
-            text-decoration: none;
-        }
-
+        /* Navigasjon */
         nav a {
             color: #0000EE;
             font-size: 1em;
             margin-left: 30px;
             margin-right: 20px;
-            
-        }
-        
-        .center {
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          width: 50%;
+            text-decoration: none;
         }
 
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        nav span {
+            font-weight: bold;
+        }
+
+        /* Midtstillingsklasse */
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        /* Innholdselement */
+        .content {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    
+    <!-- Navigasjonsmeny -->
     <nav>
         <span>MENY:</span>
         <a href="{{ url_for('index') }}">Hjem</a>
         <a href="{{ url_for('behandle') }}">Søk</a>
         <a href="{{ url_for('barnehager') }}">Barnehager</a>
+        <a href="{{ url_for('soknader') }}">Søknader</a> <!-- Nytt meny-element -->
 
-        <a href="{{ url_for('commit') }}" style="float: right;"> commit</a>
-        <span style="float: right">ADMIN:</span>
+        <!-- Administratorseksjon -->
+        <a href="{{ url_for('commit') }}" style="float: right;">Commit</a>
+        <span style="float: right;">ADMIN:</span>
     </nav>
     <hr>
+
+    <!-- Hovedinnhold -->
     <div class="content">
-        {% block content %} {% endblock %}
+        {% block content %}{% endblock %}
     </div>
 </body>
 </html>
-

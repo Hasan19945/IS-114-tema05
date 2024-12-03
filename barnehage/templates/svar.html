@@ -1,12 +1,27 @@
 {% extends 'base.html' %}
-<!-- Skriv inn din kode her for å returnere svar for bruksscenario om svar på en søknad. --> 
+<!-- Søknadsresultat for bruksscenario -->
 {% block content %}
-<table border=1>
-	{% for k,v in data.items() %}
-	<tr>
-		<th>{{ k }}</th>
-		<td>{{ v }}</td>
-	</tr>
-	{% endfor %}
+<h1>Søknadsresultat</h1>
+
+<!-- Viser brukerens informasjon i en tabell -->
+<table border="1">
+    {% for k, v in data.items() %}
+    <tr>
+        <th>{{ k }}</th>
+        <td>{{ v }}</td>
+    </tr>
+    {% endfor %}
 </table>
+
+<!-- Viser resultat av søknaden -->
+<h2>Resultat:</h2>
+<p><strong>{{ resultat }}</strong></p>
+
+<!-- Hvis resultatet er "TILBUD", vis en gratulasjonsmelding -->
+{% if resultat == "TILBUD" %}
+<p>Gratulerer! Du har fått plass i den prioriterte barnehagen.</p>
+{% else %}
+<!-- Hvis resultatet er "AVSLAG", vis en beklagelsesmelding -->
+<p>Beklager, vi kan dessverre ikke tilby plass i den prioriterte barnehagen nå.</p>
+{% endif %}
 {% endblock %}

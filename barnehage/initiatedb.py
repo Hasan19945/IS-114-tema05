@@ -44,7 +44,7 @@ def initiate_db(db_name):
     soknad  = pd.DataFrame(columns = kolonner_soknad)
     
     
-    with pd.ExcelWriter(db_name) as writer:  
+    with pd.ExcelWriter(db_name, engine="odf") as writer:  
         forelder.to_excel(writer, sheet_name='foresatt')
         barnehage.to_excel(writer, sheet_name='barnehage')
         barn.to_excel(writer, sheet_name='barn')
